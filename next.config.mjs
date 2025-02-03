@@ -18,7 +18,11 @@ const nextConfig = {
     try {
       return [...redirects, ...(await get("redirects"))];
     } catch {
-      return [];
+      return [{
+        source: "/",
+        destination: "/notes",
+        permanent: true,
+        }];
     }
   },
   webpack(config) {
